@@ -1,73 +1,101 @@
-# React + TypeScript + Vite
+# 🏆 Hack@JIT 1.0 - SDG Edition
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![Hack@JIT Header](https://raw.githubusercontent.com/Jeeva1121/Hackathon---Hack-JIT-1.0/main/public/favicon.png)
 
-Currently, two official plugins are available:
+> **"Code Till You Drop"** - A signature 24-hour innovation marathon hosted by Jansons Institute of Technology.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Hack@JIT 1.0 is a premium, full-stack hackathon management platform designed to facilitate a 24-hour coding competition focused on the UN's 17 Sustainable Development Goals (SDGs). This platform handles everything from landing page engagement to participant registration and administrative oversight.
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## ✨ Features
 
-## Expanding the ESLint configuration
+### 🏢 For Participants
+- **Dynamic Landing Page:** High-performance UI with glassmorphism and smooth animations.
+- **SDG Exploration:** Interactive section showcasing all 17 Global Goals.
+- **2-Member Team Registration:** Secure registration flow with automated email confirmations via Nodemailer.
+- **Integrated Payments:** QR-based UPI payment gateway integration for registration fees.
+- **Real-time Schedule:** Detailed 24-hour event timeline with custom thematic icons.
+- **Accommodation Management:** Built-in tracking for overnight stay requirements.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### 🔐 For Administration (Staff Portal)
+- **Role-Based Access:** Secure login for Admins and Coordinators.
+- **Live Statistics:** Real-time dashboard showing total registrations, verified teams, and slots left.
+- **Team Verification:** Capability to verify or reject team registrations with instant email notifications to participants.
+- **Excel Export:** One-click data export of all team details for offline logistics.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 🛠 Tech Stack
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+**Frontend:**
+- **React.js (Vite)** - For a lightning-fast UI.
+- **Framer Motion** - Delivering premium, high-end animations.
+- **Lucide React** - Modern, clean iconography.
+- **Vanilla CSS** - Tailored, responsive design with glassmorphism effects.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+**Backend:**
+- **Node.js & Express** - Scalable REST API architecture.
+- **MongoDB (Atlas)** - Cloud-native NoSQL database.
+- **Nodemailer** - Professional email automated communication.
+- **XLSX** - Backend Excel generation for data export.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+---
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js (v16+)
+- MongoDB connection string
+- Gmail App Password (for email automation)
+
+### Installation
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/Jeeva1121/Hackathon---Hack-JIT-1.0.git
+   cd Hackathon---Hack-JIT-1.0
+   ```
+
+2. **Frontend Setup:**
+   ```bash
+   npm install
+   npm run dev
+   ```
+
+3. **Backend Setup:**
+   ```bash
+   cd server
+   npm install
+   ```
+
+4. **Environment Configuration:**
+   Create a `.env` file in the `server` directory:
+   ```env
+   PORT=5001
+   MONGODB_URI=your_mongodb_uri
+   ADMIN_PASSWORD=your_admin_pass
+   COORDINATOR_PASSWORD=your_coord_pass
+   EMAIL_USER=your_email@gmail.com
+   EMAIL_PASS=your_app_password
+   ```
+
+5. **Run Backend:**
+   ```bash
+   node index.js
+   ```
+
+---
+
+## 🎯 Purpose
+The purpose of Hack@JIT 1.0 is to empower young engineers to build technology-driven solutions for real-world global challenges. By streamlining the registration and verification process, we ensure participants can focus solely on what matters most: **Building the future.**
+
+---
+
+## 📸 Visuals & Branding
+- **Theme:** Minimalist White & Blue Glassmorphism.
+- **Accent:** Emerald Green (Success/Verification) & Amber (Warning/Alert).
+- **Favicon:** Custom Golden Trophy representation of success.
+
+---
+Developed with ❤️ by **Jeeva** & Team jit_earth.
