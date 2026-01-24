@@ -1025,10 +1025,18 @@ const RegistrationForm: React.FC = () => {
                                     flexDirection: 'column',
                                     gap: '20px'
                                 }}>
-                                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '16px' }}>
-                                        <div style={{ flex: 1, minWidth: '200px' }}>
+                                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '20px' }}>
+                                        <div style={{ flex: '1 1 200px' }}>
                                             <p style={{ fontSize: '11px', color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '1.5px', fontWeight: 800, marginBottom: '6px' }}>UPI Payment Details</p>
-                                            <p style={{ fontWeight: 900, color: '#0f172a', fontSize: '20px', letterSpacing: '0.01em', marginBottom: '8px' }}>prasathkumartvb@okaxis</p>
+                                            <p style={{
+                                                fontWeight: 900,
+                                                color: '#0f172a',
+                                                fontSize: '18px',
+                                                letterSpacing: '0.01em',
+                                                marginBottom: '8px',
+                                                wordBreak: 'break-all',
+                                                lineHeight: 1.3
+                                            }}>prasathkumartvb@okaxis</p>
                                             <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
                                                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#475569', fontSize: '14px', fontWeight: 600 }}>
                                                     <div style={{ width: '4px', height: '4px', borderRadius: '50%', background: '#3b82f6' }}></div>
@@ -1041,18 +1049,20 @@ const RegistrationForm: React.FC = () => {
                                             </div>
                                         </div>
                                         <div style={{
-                                            padding: '12px 24px',
+                                            padding: '10px 18px',
                                             background: 'linear-gradient(135deg, #f0f9ff, #e0f2fe)',
-                                            borderRadius: '16px',
+                                            borderRadius: '12px',
                                             display: 'flex',
                                             alignItems: 'center',
-                                            gap: '10px',
+                                            justifyContent: 'center',
+                                            gap: '8px',
                                             color: '#0284c7',
-                                            fontSize: '14px',
+                                            fontSize: '13px',
                                             fontWeight: 800,
-                                            boxShadow: '0 4px 12px -2px rgba(2, 132, 199, 0.1)'
+                                            boxShadow: '0 4px 12px -2px rgba(2, 132, 199, 0.1)',
+                                            width: 'fit-content'
                                         }}>
-                                            <Smartphone size={18} /> GPay / PhonePe / Paytm
+                                            <Smartphone size={16} /> GPay / PhonePe / Paytm
                                         </div>
                                     </div>
 
@@ -1218,9 +1228,9 @@ const RegistrationForm: React.FC = () => {
                                 disabled={isSubmitting || !accepted}
                                 style={{
                                     width: 'fit-content',
-                                    minWidth: '240px',
-                                    padding: '16px 32px',
-                                    fontSize: '16px',
+                                    minWidth: '200px',
+                                    padding: '14px 28px',
+                                    fontSize: '15px',
                                     fontWeight: 800,
                                     borderRadius: '100px',
                                     background: accepted

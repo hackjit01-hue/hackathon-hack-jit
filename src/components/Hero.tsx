@@ -85,10 +85,10 @@ const Hero: React.FC = () => {
                     </p>
 
                     <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap', marginBottom: '56px' }}>
-                        <Link to="/register" className="btn-primary" style={{ padding: '16px 36px', fontSize: '18px' }}>
-                            Register Team <ArrowRight size={20} />
+                        <Link to="/register" className="btn-primary" style={{ padding: '14px 30px', fontSize: '16px' }}>
+                            Register Team <ArrowRight size={18} />
                         </Link>
-                        <a href="#about" className="btn-outline" style={{ padding: '16px 36px', fontSize: '18px' }}>
+                        <a href="#about" className="btn-outline" style={{ padding: '14px 30px', fontSize: '16px' }}>
                             View 17 SDGs
                         </a>
                     </div>

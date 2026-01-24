@@ -77,7 +77,7 @@ const Navbar: React.FC = () => {
           {navLinks.map((link) => (
             <a key={link.name} href={link.href} style={{ color: '#64748b', textDecoration: 'none', fontWeight: 600, fontSize: '15px' }}>{link.name}</a>
           ))}
-          <Link to="/register" className="btn-primary" style={{ padding: '10px 24px', fontSize: '14px', borderRadius: '100px' }}>Register Now</Link>
+          <Link to="/register" className="btn-primary" style={{ padding: '8px 20px', fontSize: '13px', borderRadius: '100px' }}>Register Now</Link>
         </div>
       )}
 
