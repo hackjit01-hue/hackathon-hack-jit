@@ -42,8 +42,8 @@ const WelcomeModal: React.FC = () => {
                         style={{
                             background: 'white',
                             width: '100%',
-                            maxWidth: '540px',
-                            borderRadius: '40px',
+                            maxWidth: '440px',
+                            borderRadius: '32px',
                             overflow: 'hidden',
                             position: 'relative',
                             boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.3)',
@@ -79,7 +79,7 @@ const WelcomeModal: React.FC = () => {
                         </button>
 
                         {/* Image Header */}
-                        <div style={{ position: 'relative', height: '280px', width: '100%' }}>
+                        <div style={{ position: 'relative', height: '200px', width: '100%' }}>
                             <img
                                 src={campusImg}
                                 alt="JIT Campus"
@@ -100,15 +100,15 @@ const WelcomeModal: React.FC = () => {
                         </div>
 
                         {/* Content */}
-                        <div style={{ padding: '0 40px 40px', textAlign: 'center' }}>
+                        <div style={{ padding: '0 32px 32px', textAlign: 'center' }}>
                             <div style={{
                                 width: '100%',
                                 overflow: 'hidden',
                                 background: 'rgba(0, 78, 224, 0.05)',
                                 borderRadius: '100px',
-                                marginBottom: '28px',
+                                marginBottom: '20px',
                                 position: 'relative',
-                                height: '36px',
+                                height: '32px',
                                 display: 'flex',
                                 alignItems: 'center',
                                 border: '1px solid rgba(0, 78, 224, 0.1)'
@@ -126,28 +126,28 @@ const WelcomeModal: React.FC = () => {
                                         alignItems: 'center',
                                         color: '#004ee0',
                                         fontWeight: 800,
-                                        fontSize: '14px',
+                                        fontSize: '12px',
                                         letterSpacing: '0.02em',
                                         position: 'absolute',
                                         left: 0
                                     }}
                                 >
                                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px', paddingRight: '40px' }}>
-                                        <Code2 size={16} />
+                                        <Code2 size={14} />
                                         <span>HACKATHON SEASON IS HERE — A 24 HOURS HACKATHON, "CODE TILL YOU DROP"</span>
                                     </div>
                                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px', paddingRight: '40px' }}>
-                                        <Code2 size={16} />
+                                        <Code2 size={14} />
                                         <span>HACKATHON SEASON IS HERE — A 24 HOURS HACKATHON, "CODE TILL YOU DROP"</span>
                                     </div>
                                 </motion.div>
                             </div>
 
                             <h2 style={{
-                                fontSize: '40px',
+                                fontSize: '32px',
                                 fontWeight: 900,
                                 color: '#0f172a',
-                                marginBottom: '12px',
+                                marginBottom: '8px',
                                 lineHeight: 1
                             }}>
                                 <span style={{ color: 'var(--primary)' }}>Hack@JIT</span> 1.0
@@ -156,16 +156,17 @@ const WelcomeModal: React.FC = () => {
                             <div style={{
                                 display: 'inline-flex',
                                 alignItems: 'center',
-                                gap: '12px',
+                                gap: '10px',
                                 background: 'rgba(255, 255, 255, 0.95)',
-                                padding: '14px 28px',
+                                padding: '10px 20px',
                                 borderRadius: '100px',
-                                marginBottom: '36px',
+                                marginBottom: '28px',
                                 boxShadow: '0 10px 30px rgba(0, 78, 224, 0.08)',
                                 border: '1px solid rgba(0, 78, 224, 0.1)',
-                                fontWeight: 800
+                                fontWeight: 800,
+                                fontSize: '14px'
                             }}>
-                                <img src={sleepIcon} alt="Sleep Icon" style={{ width: '22px', height: '22px' }} />
+                                <img src={sleepIcon} alt="Sleep Icon" style={{ width: '18px', height: '18px' }} />
                                 <span>
                                     "404": <span style={{ color: '#004ee0' }}>Sleep Not Found</span>
                                 </span>
@@ -175,13 +176,13 @@ const WelcomeModal: React.FC = () => {
                                 onClick={closeModal}
                                 style={{
                                     width: '100%',
-                                    maxWidth: '280px',
+                                    maxWidth: '240px',
                                     margin: '0 auto',
                                     display: 'flex',
                                     alignItems: 'center',
                                     justifyContent: 'center',
-                                    padding: '24px 32px',
-                                    fontSize: '16px',
+                                    padding: '18px 24px',
+                                    fontSize: '15px',
                                     fontWeight: 700,
                                     borderRadius: '100px',
                                     background: '#22c55e',

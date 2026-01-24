@@ -348,26 +348,26 @@ const RegistrationForm: React.FC = () => {
                             onClick={(e) => e.stopPropagation()}
                             style={{
                                 background: 'linear-gradient(180deg, #ffffff 0%, #f8fafc 100%)',
-                                borderRadius: '48px',
-                                maxWidth: '560px',
+                                borderRadius: '32px',
+                                maxWidth: '480px',
                                 width: '100%',
-                                maxHeight: '85vh',
+                                maxHeight: '80vh',
                                 overflow: 'hidden',
                                 display: 'flex',
                                 flexDirection: 'column',
-                                boxShadow: '0 30px 80px -20px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255,255,255,0.1)'
+                                boxShadow: '0 30px 80px -20px rgba(0, 0, 0, 0.3)'
                             }}
                         >
                             {/* Modal Header */}
                             <div style={{
-                                padding: '24px 28px',
+                                padding: '16px 20px',
                                 background: 'linear-gradient(135deg, #004ee0 0%, #1883ff 50%, #22c55e 100%)',
                                 display: 'flex',
                                 justifyContent: 'space-between',
                                 alignItems: 'center'
                             }}>
-                                <h3 style={{ fontSize: '20px', fontWeight: 800, color: 'white', display: 'flex', alignItems: 'center', gap: '12px' }}>
-                                    <FileText size={24} />
+                                <h3 style={{ fontSize: '18px', fontWeight: 800, color: 'white', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                                    <FileText size={20} />
                                     Rules & Requirements
                                 </h3>
                                 <button
@@ -376,15 +376,15 @@ const RegistrationForm: React.FC = () => {
                                         background: 'rgba(255,255,255,0.2)',
                                         border: 'none',
                                         cursor: 'pointer',
-                                        padding: '10px',
-                                        borderRadius: '14px',
+                                        padding: '8px',
+                                        borderRadius: '12px',
                                         display: 'flex',
                                         alignItems: 'center',
                                         justifyContent: 'center',
                                         transition: 'all 0.2s ease'
                                     }}
                                 >
-                                    <X size={22} color="white" />
+                                    <X size={18} color="white" />
                                 </button>
                             </div>
 
@@ -400,8 +400,8 @@ const RegistrationForm: React.FC = () => {
                                 {/* Hackathon Rules */}
                                 <div style={{
                                     background: 'linear-gradient(135deg, #f1f5f9, #e2e8f0)',
-                                    padding: '20px',
-                                    borderRadius: '24px'
+                                    padding: '16px',
+                                    borderRadius: '20px'
                                 }}>
                                     <h4 style={{
                                         fontWeight: 800,
@@ -425,8 +425,8 @@ const RegistrationForm: React.FC = () => {
                                 {/* Mandatory Requirements */}
                                 <div style={{
                                     background: 'linear-gradient(135deg, #fff7ed, #fed7aa40)',
-                                    padding: '20px',
-                                    borderRadius: '24px'
+                                    padding: '16px',
+                                    borderRadius: '20px'
                                 }}>
                                     <h4 style={{
                                         fontWeight: 800,
@@ -460,9 +460,9 @@ const RegistrationForm: React.FC = () => {
                                 <label style={{
                                     display: 'flex',
                                     alignItems: 'center',
-                                    gap: '16px',
+                                    gap: '12px',
                                     cursor: 'pointer',
-                                    padding: '16px 20px',
+                                    padding: '12px 16px',
                                     background: rulesChecked ? 'linear-gradient(135deg, #f0fdf4, #dcfce7)' : '#f8fafc',
                                     borderRadius: '100px',
                                     border: rulesChecked ? '2px solid #22c55e' : '2px solid #e2e8f0',
@@ -480,7 +480,7 @@ const RegistrationForm: React.FC = () => {
                                             borderRadius: '8px'
                                         }}
                                     />
-                                    <span style={{ fontWeight: 600, color: rulesChecked ? '#166534' : '#475569', fontSize: '15px' }}>
+                                    <span style={{ fontWeight: 600, color: rulesChecked ? '#166534' : '#475569', fontSize: '13px' }}>
                                         I have read and accept all Rules & Requirements
                                     </span>
                                 </label>

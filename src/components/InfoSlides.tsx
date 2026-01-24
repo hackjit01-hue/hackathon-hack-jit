@@ -71,10 +71,11 @@ const InfoSlides: React.FC = () => {
                             display: 'flex',
                             flexDirection: 'column',
                             alignItems: 'center',
-                            overflow: 'hidden',
+                            overflow: 'visible',
                             background: 'white',
                             border: 'none',
-                            boxShadow: `0 15px 35px ${sdg.color}80`, // Even more intense glow (80 is 50% opacity)
+                            borderRadius: '16px',
+                            boxShadow: `0 10px 25px ${sdg.color}60`,
                             transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
                             cursor: 'pointer'
                         }}
