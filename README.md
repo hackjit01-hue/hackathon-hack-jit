@@ -36,7 +36,7 @@ Hack@JIT 1.0 is a premium, full-stack hackathon management platform designed to 
 
 **Backend:**
 - **Node.js & Express** - Scalable REST API architecture.
-- **MongoDB (Atlas)** - Cloud-native NoSQL database.
+- **Firebase Firestore** - Cloud-native NoSQL real-time database.
 - **Nodemailer** - Professional email automated communication.
 - **XLSX** - Backend Excel generation for data export.
 
@@ -46,7 +46,7 @@ Hack@JIT 1.0 is a premium, full-stack hackathon management platform designed to 
 
 ### Prerequisites
 - Node.js (v16+)
-- MongoDB connection string
+- Firebase Project & Firestore Database
 - Gmail App Password (for email automation)
 
 ### Installation
@@ -73,11 +73,17 @@ Hack@JIT 1.0 is a premium, full-stack hackathon management platform designed to 
    Create a `.env` file in the `server` directory:
    ```env
    PORT=5001
-   MONGODB_URI=your_mongodb_uri
    ADMIN_PASSWORD=your_admin_pass
    COORDINATOR_PASSWORD=your_coord_pass
    EMAIL_USER=your_email@gmail.com
    EMAIL_PASS=your_app_password
+
+   # Firebase Config
+   FIREBASE_API_KEY=your_api_key
+   FIREBASE_AUTH_DOMAIN=your_project.firebaseapp.com
+   FIREBASE_PROJECT_ID=your_project_id
+   FIREBASE_STORAGE_BUCKET=your_project.appspot.com
+   FIREBASE_MESSAGING_SENDER_ID=your_sender_id
    ```
 
 5. **Run Backend:**
