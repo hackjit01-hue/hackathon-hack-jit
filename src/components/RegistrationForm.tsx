@@ -19,6 +19,13 @@ const RegistrationForm: React.FC = () => {
     const [showRulesModal, setShowRulesModal] = useState(false);
     const [rulesChecked, setRulesChecked] = useState(false);
     const [accepted, setAccepted] = useState(false);
+    const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+    useEffect(() => {
+        const handleResize = () => setIsMobile(window.innerWidth < 768);
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
     const [formData, setFormData] = useState({
         teamName: '',
@@ -554,7 +561,7 @@ const RegistrationForm: React.FC = () => {
                     transition={{ duration: 0.5 }}
                     style={{
                         position: 'absolute',
-                        top: '100px',
+                        top: isMobile ? '70px' : '100px',
                         left: '5%',
                         zIndex: 1100
                     }}
@@ -562,8 +569,8 @@ const RegistrationForm: React.FC = () => {
                     <Link to="/" style={{
                         display: 'inline-flex',
                         alignItems: 'center',
-                        gap: '12px',
-                        padding: '14px 28px',
+                        gap: '8px',
+                        padding: '10px 20px',
                         background: 'rgba(255, 255, 255, 1)',
                         backdropFilter: 'blur(10px)',
                         borderRadius: '100px',
@@ -571,13 +578,13 @@ const RegistrationForm: React.FC = () => {
                         color: '#475569',
                         textDecoration: 'none',
                         fontWeight: 700,
-                        fontSize: '15px',
+                        fontSize: '13px',
                         transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                        boxShadow: '0 10px 30px rgba(0, 0, 0, 0.06)',
+                        boxShadow: '0 8px 24px rgba(0, 0, 0, 0.05)',
                         overflow: 'hidden',
                         position: 'relative'
                     }}>
-                        <ArrowLeft size={18} />
+                        <ArrowLeft size={16} />
                         Back to Home
                     </Link>
                 </motion.div>
