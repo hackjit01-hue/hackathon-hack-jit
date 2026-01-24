@@ -23,7 +23,7 @@ const AdminDashboard: React.FC = () => {
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
-            const response = await fetch('http://localhost:5001/api/admin/login', {
+            const response = await fetch('/api/admin/login', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ password })
@@ -51,7 +51,7 @@ const AdminDashboard: React.FC = () => {
 
     const fetchStats = async (token: string) => {
         try {
-            const response = await fetch('http://localhost:5001/api/candidates/stats', {
+            const response = await fetch('/api/candidates/stats', {
                 headers: { 'x-admin-password': token }
             });
             const data = await response.json();
@@ -63,7 +63,7 @@ const AdminDashboard: React.FC = () => {
         setStatusLoading(id);
         const token = localStorage.getItem('adminToken') || '';
         try {
-            await fetch(`http://localhost:5001/api/candidates/${id}/status`, {
+            await fetch(`/api/candidates/${id}/status`, {
                 method: 'PATCH',
                 headers: { 'Content-Type': 'application/json', 'x-admin-password': token },
                 body: JSON.stringify({ status: newStatus })
@@ -76,7 +76,7 @@ const AdminDashboard: React.FC = () => {
         setLoading(true);
         const token = localStorage.getItem('adminToken') || '';
         try {
-            const res = await fetch('http://localhost:5001/api/candidates/export', { headers: { 'x-admin-password': token } });
+            const res = await fetch('/api/candidates/export', { headers: { 'x-admin-password': token } });
             const blob = await res.blob();
             const url = window.URL.createObjectURL(blob);
             const a = document.createElement('a');

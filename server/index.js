@@ -221,4 +221,8 @@ app.get('/api/candidates/stats', auth, async (req, res) => {
     }
 });
 
-app.listen(5001, () => console.log('Server on 5001'));
+if (process.env.NODE_ENV !== 'production') {
+    app.listen(5001, () => console.log('Server on 5001'));
+}
+
+module.exports = app;
