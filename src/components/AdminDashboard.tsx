@@ -32,6 +32,7 @@ const AdminDashboard: React.FC = () => {
             if (response.ok) {
                 setIsAuthenticated(true);
                 localStorage.setItem('adminToken', data.token);
+                localStorage.setItem('adminRole', data.role);
                 fetchStats(data.token);
             } else {
                 setError('Invalid password');
@@ -42,6 +43,7 @@ const AdminDashboard: React.FC = () => {
     const handleLogout = () => {
         setIsAuthenticated(false);
         localStorage.removeItem('adminToken');
+        localStorage.removeItem('adminRole');
         setPassword('');
         setError('');
         navigate('/');
@@ -110,30 +112,38 @@ const AdminDashboard: React.FC = () => {
         <div style={{ padding: '40px 5%', background: '#f8fafc', minHeight: '100vh' }}>
             <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '40px', flexWrap: 'wrap', gap: '20px' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
-                        <h1 style={{ margin: 0, fontSize: 'clamp(24px, 4vw, 36px)', fontWeight: 900 }}>Team Control Center</h1>
+                    <h1 style={{ margin: 0, fontSize: 'clamp(24px, 4vw, 36px)', fontWeight: 900 }}>
+                        Team Control Center
+                        <span style={{ marginLeft: '16px', fontSize: '14px', verticalAlign: 'middle', padding: '6px 16px', background: '#004ee010', border: '1px solid #004ee020', borderRadius: '100px', color: '#004ee0', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                            {localStorage.getItem('adminRole') || 'Staff'}
+                        </span>
+                    </h1>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+                        <button onClick={handleDownload} disabled={loading} style={{ background: 'var(--primary)', color: 'white', padding: '14px 28px', borderRadius: '16px', border: 'none', display: 'flex', alignItems: 'center', gap: '10px', fontWeight: 700, cursor: 'pointer', boxShadow: '0 10px 20px rgba(0, 78, 224, 0.15)' }}>
+                            {loading ? 'Exporting...' : 'Export Teams to Excel'} <Download size={20} />
+                        </button>
                         <button
                             onClick={handleLogout}
                             style={{
                                 background: '#fee2e2',
                                 color: '#ef4444',
-                                padding: '10px 20px',
-                                borderRadius: '100px',
+                                padding: '14px 24px',
+                                borderRadius: '16px',
                                 border: 'none',
                                 fontWeight: 700,
-                                fontSize: '14px',
+                                fontSize: '15px',
                                 cursor: 'pointer',
                                 display: 'flex',
                                 alignItems: 'center',
-                                gap: '8px'
+                                gap: '10px',
+                                transition: 'all 0.2s ease'
                             }}
+                            onMouseOver={(e) => e.currentTarget.style.background = '#fecaca'}
+                            onMouseOut={(e) => e.currentTarget.style.background = '#fee2e2'}
                         >
-                            <LogOut size={16} /> Logout
+                            <LogOut size={18} /> Logout
                         </button>
                     </div>
-                    <button onClick={handleDownload} disabled={loading} style={{ background: 'var(--primary)', color: 'white', padding: '14px 28px', borderRadius: '16px', border: 'none', display: 'flex', alignItems: 'center', gap: '10px', fontWeight: 700, cursor: 'pointer', boxShadow: '0 10px 20px rgba(0, 78, 224, 0.15)' }}>
-                        {loading ? 'Exporting...' : 'Export Teams to Excel'} <Download size={20} />
-                    </button>
                 </div>
 
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px', marginBottom: '40px' }}>
