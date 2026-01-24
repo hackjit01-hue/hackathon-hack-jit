@@ -406,23 +406,36 @@ const RegistrationForm: React.FC = () => {
                             }}>
                                 {/* Hackathon Rules */}
                                 <div style={{
-                                    background: 'linear-gradient(135deg, #f1f5f9, #e2e8f0)',
-                                    padding: '16px',
-                                    borderRadius: '20px'
+                                    background: 'rgba(255, 255, 255, 0.5)',
+                                    backdropFilter: 'blur(10px)',
+                                    padding: isMobile ? '16px' : '24px',
+                                    borderRadius: isMobile ? '20px' : '32px',
+                                    border: '1px solid rgba(0, 78, 224, 0.08)',
+                                    boxShadow: '0 10px 30px rgba(0,0,0,0.03)'
                                 }}>
                                     <h4 style={{
                                         fontWeight: 800,
                                         color: '#0f172a',
-                                        marginBottom: '16px',
-                                        fontSize: '16px',
+                                        marginBottom: isMobile ? '12px' : '20px',
+                                        fontSize: isMobile ? '14px' : '18px',
                                         display: 'flex',
                                         alignItems: 'center',
                                         gap: '10px'
                                     }}>
-                                        <ShieldCheck size={20} color="var(--primary)" />
-                                        24-Hour Hackathon Rules
+                                        <div style={{
+                                            width: isMobile ? '32px' : '40px',
+                                            height: isMobile ? '32px' : '40px',
+                                            borderRadius: '12px',
+                                            background: 'rgba(0, 78, 224, 0.1)',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            justifyContent: 'center'
+                                        }}>
+                                            <ShieldCheck size={isMobile ? 18 : 22} color="var(--primary)" />
+                                        </div>
+                                        24-Hour Rules
                                     </h4>
-                                    <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                                    <div style={{ display: 'flex', flexDirection: 'column', gap: isMobile ? '8px' : '12px' }}>
                                         {hackathonRules.map((rule, index) => (
                                             <RuleItem key={index} number={index + 1} text={rule} />
                                         ))}
@@ -431,23 +444,36 @@ const RegistrationForm: React.FC = () => {
 
                                 {/* Mandatory Requirements */}
                                 <div style={{
-                                    background: 'linear-gradient(135deg, #fff7ed, #fed7aa40)',
-                                    padding: '16px',
-                                    borderRadius: '20px'
+                                    background: 'rgba(255, 247, 237, 0.5)',
+                                    backdropFilter: 'blur(10px)',
+                                    padding: isMobile ? '16px' : '24px',
+                                    borderRadius: isMobile ? '20px' : '32px',
+                                    border: '1px solid rgba(234, 88, 12, 0.08)',
+                                    boxShadow: '0 10px 30px rgba(234, 88, 12, 0.03)'
                                 }}>
                                     <h4 style={{
                                         fontWeight: 800,
                                         color: '#9a3412',
-                                        marginBottom: '16px',
-                                        fontSize: '16px',
+                                        marginBottom: isMobile ? '12px' : '20px',
+                                        fontSize: isMobile ? '14px' : '18px',
                                         display: 'flex',
                                         alignItems: 'center',
                                         gap: '10px'
                                     }}>
-                                        <img src={regTrophy} alt="Trophy" style={{ width: '20px', height: '20px', objectFit: 'contain' }} />
-                                        Mandatory Requirements
+                                        <div style={{
+                                            width: isMobile ? '32px' : '40px',
+                                            height: isMobile ? '32px' : '40px',
+                                            borderRadius: '12px',
+                                            background: 'rgba(234, 88, 12, 0.1)',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            justifyContent: 'center'
+                                        }}>
+                                            <img src={regTrophy} alt="Trophy" style={{ width: isMobile ? '18px' : '22px', height: isMobile ? '18px' : '22px', objectFit: 'contain' }} />
+                                        </div>
+                                        Mandatory Req.
                                     </h4>
-                                    <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                                    <div style={{ display: 'flex', flexDirection: 'column', gap: isMobile ? '8px' : '12px' }}>
                                         {requirements.map((req, index) => (
                                             <RequirementItem key={index} text={req} />
                                         ))}
@@ -561,7 +587,7 @@ const RegistrationForm: React.FC = () => {
                     transition={{ duration: 0.5 }}
                     style={{
                         position: 'absolute',
-                        top: isMobile ? '70px' : '100px',
+                        top: isMobile ? '88px' : '100px',
                         left: '5%',
                         zIndex: 1100
                     }}
