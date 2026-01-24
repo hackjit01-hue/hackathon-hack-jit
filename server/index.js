@@ -1,10 +1,10 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const cors = require('cors');
-const dotenv = require('dotenv');
-const xlsx = require('xlsx');
-const nodemailer = require('nodemailer');
-const Candidate = require('./models/Candidate');
+import express from 'express';
+import mongoose from 'mongoose';
+import cors from 'cors';
+import dotenv from 'dotenv';
+import xlsx from 'xlsx';
+import nodemailer from 'nodemailer';
+import Candidate from './models/Candidate.js';
 
 dotenv.config();
 
@@ -232,4 +232,4 @@ if (process.env.NODE_ENV !== 'production') {
     app.listen(5001, () => console.log('Server on 5001'));
 }
 
-module.exports = app;
+export default app;

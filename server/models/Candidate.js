@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const candidateSchema = new mongoose.Schema({
     teamName: { type: String, unique: true, required: true },
@@ -8,7 +8,6 @@ const candidateSchema = new mongoose.Schema({
         email: { type: String, required: true },
         college: String,
         dept: String,
-        // NEW FIELD - appended, optional for old records
         gender: String
     },
     member: {
@@ -17,7 +16,6 @@ const candidateSchema = new mongoose.Schema({
         email: { type: String, required: true },
         college: String,
         dept: String,
-        // NEW FIELD - appended, optional for old records
         gender: String
     },
     collegeDistrict: String,
@@ -37,7 +35,6 @@ const candidateSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     },
-    // NEW SECTION - Mentor Details (completely optional)
     mentor: {
         name: String,
         phone: String,
@@ -47,4 +44,4 @@ const candidateSchema = new mongoose.Schema({
     }
 });
 
-module.exports = mongoose.model('Candidate', candidateSchema);
+export default mongoose.model('Candidate', candidateSchema);
