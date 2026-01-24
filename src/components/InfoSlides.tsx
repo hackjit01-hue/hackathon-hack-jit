@@ -82,7 +82,7 @@ const InfoSlides: React.FC = () => {
                             overflow: 'visible',
                             background: 'white',
                             border: 'none',
-                            borderRadius: isMobile ? '8px' : '16px',
+                            borderRadius: isMobile ? '24px' : '32px',
                             boxShadow: `0 10px 25px ${sdg.color}60`,
                             transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
                             cursor: 'pointer'
@@ -95,7 +95,7 @@ const InfoSlides: React.FC = () => {
                                 width: '100%',
                                 height: 'auto',
                                 display: 'block',
-                                borderRadius: isMobile ? '8px' : '16px'
+                                borderRadius: isMobile ? '24px' : '32px'
                             }}
                         />
                     </motion.div>

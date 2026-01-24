@@ -250,31 +250,31 @@ const RegistrationForm: React.FC = () => {
         <div style={{
             display: 'flex',
             alignItems: 'flex-start',
-            gap: '16px',
-            padding: '16px 20px',
+            gap: isMobile ? '10px' : '16px',
+            padding: isMobile ? '12px 14px' : '16px 20px',
             background: 'white',
-            borderRadius: '20px',
+            borderRadius: isMobile ? '14px' : '20px',
             border: '1px solid rgba(226, 232, 240, 0.8)',
             boxShadow: '0 4px 12px rgba(0, 0, 0, 0.02)',
             transition: 'all 0.2s ease'
         }}>
             <div style={{
-                minWidth: '32px',
-                height: '32px',
+                minWidth: isMobile ? '24px' : '32px',
+                height: isMobile ? '24px' : '32px',
                 background: 'linear-gradient(135deg, #004ee0 0%, #1883ff 100%)',
                 color: 'white',
-                borderRadius: '10px',
+                borderRadius: '8px',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                fontSize: '14px',
+                fontSize: isMobile ? '11px' : '14px',
                 fontWeight: 800,
                 flexShrink: 0,
                 boxShadow: '0 4px 10px rgba(0, 78, 224, 0.2)'
             }}>
                 {number}
             </div>
-            <span style={{ fontSize: '15px', color: '#334155', lineHeight: '1.6', fontWeight: 600 }}>{text}</span>
+            <span style={{ fontSize: isMobile ? '13px' : '15px', color: '#334155', lineHeight: '1.5', fontWeight: 600 }}>{text}</span>
         </div>
     );
 
@@ -282,22 +282,22 @@ const RegistrationForm: React.FC = () => {
         <div style={{
             display: 'flex',
             alignItems: 'center',
-            gap: '14px',
-            padding: '14px 20px',
+            gap: isMobile ? '10px' : '14px',
+            padding: isMobile ? '10px 14px' : '14px 20px',
             background: '#fffbf5',
-            borderRadius: '18px',
+            borderRadius: isMobile ? '12px' : '18px',
             border: '1px solid rgba(254, 215, 170, 0.8)',
             boxShadow: '0 4px 12px rgba(251, 146, 60, 0.05)'
         }}>
             <div style={{
-                width: '12px',
-                height: '12px',
+                width: isMobile ? '8px' : '12px',
+                height: isMobile ? '8px' : '12px',
                 background: 'linear-gradient(135deg, #f97316, #fb923c)',
-                borderRadius: '4px',
+                borderRadius: '3px',
                 flexShrink: 0,
                 boxShadow: '0 2px 6px rgba(249, 115, 22, 0.3)'
             }}></div>
-            <span style={{ fontSize: '15px', color: '#9a3412', lineHeight: '1.5', fontWeight: 600 }}>{text}</span>
+            <span style={{ fontSize: isMobile ? '13px' : '15px', color: '#9a3412', lineHeight: '1.4', fontWeight: 600 }}>{text}</span>
         </div>
     );
 
@@ -397,12 +397,12 @@ const RegistrationForm: React.FC = () => {
 
                             {/* Modal Body - Scrollable */}
                             <div style={{
-                                padding: '24px',
+                                padding: isMobile ? '16px' : '24px',
                                 overflowY: 'auto',
                                 flex: 1,
                                 display: 'flex',
                                 flexDirection: 'column',
-                                gap: '20px'
+                                gap: isMobile ? '12px' : '20px'
                             }}>
                                 {/* Hackathon Rules */}
                                 <div style={{
@@ -483,19 +483,19 @@ const RegistrationForm: React.FC = () => {
 
                             {/* Modal Footer */}
                             <div style={{
-                                padding: '24px',
+                                padding: isMobile ? '16px' : '24px',
                                 borderTop: '1px solid rgba(226, 232, 240, 0.6)',
                                 background: 'white',
                                 display: 'flex',
                                 flexDirection: 'column',
-                                gap: '16px'
+                                gap: isMobile ? '12px' : '16px'
                             }}>
                                 <label style={{
                                     display: 'flex',
                                     alignItems: 'center',
-                                    gap: '12px',
+                                    gap: isMobile ? '8px' : '12px',
                                     cursor: 'pointer',
-                                    padding: '12px 16px',
+                                    padding: isMobile ? '8px 12px' : '12px 16px',
                                     background: rulesChecked ? 'linear-gradient(135deg, #f0fdf4, #dcfce7)' : '#f8fafc',
                                     borderRadius: '100px',
                                     border: rulesChecked ? '2px solid #22c55e' : '2px solid #e2e8f0',
@@ -506,32 +506,32 @@ const RegistrationForm: React.FC = () => {
                                         checked={rulesChecked}
                                         onChange={(e) => setRulesChecked(e.target.checked)}
                                         style={{
-                                            width: '26px',
-                                            height: '26px',
+                                            width: isMobile ? '20px' : '26px',
+                                            height: isMobile ? '20px' : '26px',
                                             accentColor: '#22c55e',
                                             cursor: 'pointer',
-                                            borderRadius: '8px'
+                                            borderRadius: '6px'
                                         }}
                                     />
-                                    <span style={{ fontWeight: 600, color: rulesChecked ? '#166534' : '#475569', fontSize: '13px' }}>
+                                    <span style={{ fontWeight: 600, color: rulesChecked ? '#166534' : '#475569', fontSize: isMobile ? '11px' : '13px' }}>
                                         I have read and accept all Rules & Requirements
                                     </span>
                                 </label>
 
-                                <div style={{ display: 'flex', gap: '14px' }}>
+                                <div style={{ display: 'flex', gap: isMobile ? '10px' : '14px' }}>
                                     <button
                                         type="button"
                                         onClick={() => setShowRulesModal(false)}
                                         style={{
                                             flex: 1,
-                                            padding: '16px',
+                                            padding: isMobile ? '12px' : '16px',
                                             background: '#f1f5f9',
                                             color: '#64748b',
                                             border: 'none',
                                             borderRadius: '100px',
                                             fontWeight: 700,
                                             cursor: 'pointer',
-                                            fontSize: '15px'
+                                            fontSize: isMobile ? '13px' : '15px'
                                         }}
                                     >
                                         Cancel
@@ -542,7 +542,7 @@ const RegistrationForm: React.FC = () => {
                                         disabled={!rulesChecked}
                                         style={{
                                             flex: 2,
-                                            padding: '16px',
+                                            padding: isMobile ? '12px' : '16px',
                                             background: rulesChecked ? 'linear-gradient(135deg, #22c55e 0%, #16a34a 100%)' : '#94a3b8',
                                             color: 'white',
                                             border: 'none',
@@ -587,7 +587,7 @@ const RegistrationForm: React.FC = () => {
                     transition={{ duration: 0.5 }}
                     style={{
                         position: 'absolute',
-                        top: isMobile ? '88px' : '100px',
+                        top: isMobile ? '96px' : '100px',
                         left: '5%',
                         zIndex: 1100
                     }}
@@ -1030,18 +1030,19 @@ const RegistrationForm: React.FC = () => {
                                 marginBottom: '28px',
                                 border: '1px solid rgba(191, 219, 254, 0.6)'
                             }}>
-                                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '20px' }}>
+                                <div style={{ display: 'flex', alignItems: 'flex-start', gap: isMobile ? '12px' : '20px' }}>
                                     <div style={{
                                         background: 'white',
-                                        padding: '16px',
-                                        borderRadius: '20px',
-                                        boxShadow: '0 8px 24px rgba(37, 99, 235, 0.15)'
+                                        padding: isMobile ? '12px' : '16px',
+                                        borderRadius: '16px',
+                                        boxShadow: '0 8px 24px rgba(37, 99, 235, 0.15)',
+                                        flexShrink: 0
                                     }}>
-                                        <ShieldCheck size={28} style={{ color: '#2563eb' }} />
+                                        <ShieldCheck size={isMobile ? 22 : 28} style={{ color: '#2563eb' }} />
                                     </div>
                                     <div style={{ flex: 1 }}>
-                                        <p style={{ color: '#1e40af', fontWeight: 800, fontSize: '20px', marginBottom: '6px' }}>Secure Payment Process</p>
-                                        <p style={{ color: '#3b82f6', fontSize: '15px', lineHeight: '1.6' }}>
+                                        <p style={{ color: '#1e40af', fontWeight: 800, fontSize: isMobile ? '16px' : '20px', marginBottom: '4px' }}>Secure Payment Process</p>
+                                        <p style={{ color: '#3b82f6', fontSize: isMobile ? '13px' : '15px', lineHeight: '1.5' }}>
                                             To finalize your registration, please pay <strong>₹{formData.totalFee}</strong>.
                                             Scan the UPI ID using GPay, PhonePe, or Paytm.
                                         </p>
@@ -1060,22 +1061,22 @@ const RegistrationForm: React.FC = () => {
                                 }}>
                                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '20px' }}>
                                         <div style={{ flex: '1 1 200px' }}>
-                                            <p style={{ fontSize: '11px', color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '1.5px', fontWeight: 800, marginBottom: '6px' }}>UPI Payment Details</p>
+                                            <p style={{ fontSize: isMobile ? '10px' : '11px', color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '1px', fontWeight: 800, marginBottom: '4px' }}>UPI Payment Details</p>
                                             <p style={{
                                                 fontWeight: 900,
                                                 color: '#0f172a',
-                                                fontSize: '18px',
+                                                fontSize: isMobile ? '15px' : '18px',
                                                 letterSpacing: '0.01em',
-                                                marginBottom: '8px',
+                                                marginBottom: '6px',
                                                 wordBreak: 'break-all',
                                                 lineHeight: 1.3
                                             }}>prasathkumartvb@okaxis</p>
                                             <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-                                                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#475569', fontSize: '14px', fontWeight: 600 }}>
+                                                <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#475569', fontSize: isMobile ? '12px' : '14px', fontWeight: 600 }}>
                                                     <div style={{ width: '4px', height: '4px', borderRadius: '50%', background: '#3b82f6' }}></div>
                                                     Prasathkumar V
                                                 </div>
-                                                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#475569', fontSize: '14px', fontWeight: 600 }}>
+                                                <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#475569', fontSize: isMobile ? '12px' : '14px', fontWeight: 600 }}>
                                                     <div style={{ width: '4px', height: '4px', borderRadius: '50%', background: '#3b82f6' }}></div>
                                                     +91 9095330712
                                                 </div>
@@ -1100,23 +1101,23 @@ const RegistrationForm: React.FC = () => {
                                     </div>
 
                                     <div style={{
-                                        padding: '24px',
+                                        padding: isMobile ? '16px' : '24px',
                                         background: '#f8fafc',
-                                        borderRadius: '20px',
+                                        borderRadius: isMobile ? '16px' : '20px',
                                         border: '1px solid #e2e8f0',
                                         display: 'flex',
                                         flexDirection: 'column',
                                         alignItems: 'center',
-                                        gap: '20px',
+                                        gap: isMobile ? '12px' : '20px',
                                         boxShadow: 'inset 0 2px 4px rgba(0,0,0,0.02)'
                                     }}>
                                         <div style={{
                                             padding: '8px',
                                             background: 'white',
-                                            borderRadius: '20px',
+                                            borderRadius: isMobile ? '14px' : '20px',
                                             boxShadow: '0 10px 25px -5px rgba(0,0,0,0.1)',
                                             border: '1px solid #e2e8f0',
-                                            maxWidth: '180px',
+                                            maxWidth: isMobile ? '140px' : '180px',
                                             width: '100%'
                                         }}>
                                             <img
@@ -1131,8 +1132,8 @@ const RegistrationForm: React.FC = () => {
                                             />
                                         </div>
                                         <div style={{ textAlign: 'center' }}>
-                                            <p style={{ fontWeight: 800, color: '#0f172a', fontSize: '16px', marginBottom: '4px' }}>Scan to Pay</p>
-                                            <p style={{ fontSize: '14px', color: '#64748b', fontWeight: 500 }}>Open any UPI app to scan and complete payment</p>
+                                            <p style={{ fontWeight: 800, color: '#0f172a', fontSize: isMobile ? '14px' : '16px', marginBottom: '4px' }}>Scan to Pay</p>
+                                            <p style={{ fontSize: isMobile ? '12px' : '14px', color: '#64748b', fontWeight: 500 }}>Open any UPI app to scan and complete payment</p>
                                         </div>
                                     </div>
                                 </div>
@@ -1140,45 +1141,45 @@ const RegistrationForm: React.FC = () => {
 
                             <div style={{
                                 background: 'rgba(34, 197, 94, 0.03)',
-                                padding: '24px',
-                                borderRadius: '24px',
+                                padding: isMobile ? '16px' : '24px',
+                                borderRadius: isMobile ? '16px' : '24px',
                                 border: '1px solid rgba(34, 197, 94, 0.1)',
-                                marginBottom: '28px'
+                                marginBottom: isMobile ? '20px' : '28px'
                             }}>
-                                <h4 style={{ color: '#166534', fontSize: '15px', fontWeight: 800, marginBottom: '12px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Payment Guidelines</h4>
-                                <ul style={{ margin: 0, paddingLeft: '20px', color: '#166534', fontSize: '14px', fontWeight: 600, display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                                    <li>Registration fee collected via QR Code Scanner linked to secure UPI gateway.</li>
-                                    <li>Scan the UPI ID above using any app (GPay / PhonePe / Paytm).</li>
-                                    <li>Payment confirmation/screenshot is required for physical entry validation.</li>
-                                    <li>Applicable for event fee, accommodation, or additional services.</li>
+                                <h4 style={{ color: '#166534', fontSize: isMobile ? '13px' : '15px', fontWeight: 800, marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Payment Guidelines</h4>
+                                <ul style={{ margin: 0, paddingLeft: '16px', color: '#166534', fontSize: isMobile ? '12px' : '14px', fontWeight: 600, display: 'flex', flexDirection: 'column', gap: isMobile ? '4px' : '8px' }}>
+                                    <li>Registration fee via QR linked to secure UPI.</li>
+                                    <li>Scan the UPI ID above using any UPI app.</li>
+                                    <li>Payment screenshot is required for entry.</li>
+                                    <li>Applicable for event fee and accommodation.</li>
                                 </ul>
                             </div>
 
                             {renderInput("Transaction ID / Reference Number", "transactionId", null, "text", "12-digit UPI Ref No (e.g. 4029...)")}
 
                             <div style={{
-                                marginTop: '28px',
-                                padding: '28px',
+                                marginTop: isMobile ? '20px' : '28px',
+                                padding: isMobile ? '16px 20px' : '28px',
                                 background: 'linear-gradient(135deg, #f8fafc, #f1f5f9)',
-                                borderRadius: '28px',
+                                borderRadius: isMobile ? '20px' : '28px',
                                 display: 'flex',
                                 justifyContent: 'space-between',
                                 alignItems: 'center',
                                 border: '1px solid rgba(226, 232, 240, 0.8)',
                                 flexWrap: 'wrap',
-                                gap: '16px'
+                                gap: '12px'
                             }}>
                                 <div>
-                                    <p style={{ fontSize: '15px', color: '#64748b', fontWeight: 600 }}>Total Payable Amount</p>
-                                    <p style={{ fontSize: '13px', color: '#94a3b8', marginTop: '4px' }}>
+                                    <p style={{ fontSize: isMobile ? '13px' : '15px', color: '#64748b', fontWeight: 600 }}>Total Payable Amount</p>
+                                    <p style={{ fontSize: isMobile ? '11px' : '13px', color: '#94a3b8', marginTop: '4px' }}>
                                         Base: ₹250 × {formData.member.name.trim() ? 2 : 1}
                                         {(formData.leaderAccommodation === 'Yes' || formData.memberAccommodation === 'Yes') && (
-                                            <> + Accommodation: ₹200 × {(formData.leaderAccommodation === 'Yes' ? 1 : 0) + (formData.member.name.trim() && formData.memberAccommodation === 'Yes' ? 1 : 0)}</>
+                                            <> + Accom: ₹200 × {(formData.leaderAccommodation === 'Yes' ? 1 : 0) + (formData.member.name.trim() && formData.memberAccommodation === 'Yes' ? 1 : 0)}</>
                                         )}
                                     </p>
                                 </div>
                                 <span style={{
-                                    fontSize: '32px',
+                                    fontSize: isMobile ? '24px' : '32px',
                                     fontWeight: 900,
                                     background: 'linear-gradient(135deg, #0f172a, #334155)',
                                     WebkitBackgroundClip: 'text',
