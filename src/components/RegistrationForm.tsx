@@ -148,7 +148,7 @@ const RegistrationForm: React.FC = () => {
 
     const inputStyle = (fieldName: string) => ({
         width: '100%',
-        padding: '18px 24px',
+        padding: isMobile ? '14px 20px' : '18px 24px',
         borderRadius: isMobile ? '28px' : '32px',
         border: focusedField === fieldName
             ? '2px solid transparent'
@@ -156,7 +156,7 @@ const RegistrationForm: React.FC = () => {
         background: focusedField === fieldName
             ? 'linear-gradient(white, white) padding-box, linear-gradient(135deg, #004ee0, #22c55e) border-box'
             : 'rgba(255, 255, 255, 0.9)',
-        fontSize: '16px',
+        fontSize: isMobile ? '14px' : '16px',
         transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
         outline: 'none',
         boxShadow: focusedField === fieldName
@@ -184,10 +184,10 @@ const RegistrationForm: React.FC = () => {
         return (
             <div style={{ display: 'flex', flexDirection: 'column' }}>
                 <label style={{
-                    fontSize: '14px',
+                    fontSize: isMobile ? '12px' : '14px',
                     fontWeight: 700,
                     color: '#475569',
-                    marginBottom: '12px',
+                    marginBottom: '10px',
                     letterSpacing: '0.02em',
                     textTransform: 'uppercase'
                 }}>{label} {isRequired && <span style={{ color: '#22c55e' }}>*</span>}</label>
@@ -316,12 +316,12 @@ const RegistrationForm: React.FC = () => {
 
     const selectStyle = {
         width: '100%',
-        padding: '18px 24px',
+        padding: isMobile ? '14px 20px' : '18px 24px',
         paddingRight: '48px',
         borderRadius: isMobile ? '28px' : '32px',
         border: '2px solid rgba(226, 232, 240, 0.8)',
         background: 'rgba(255, 255, 255, 0.9)',
-        fontSize: '16px',
+        fontSize: isMobile ? '14px' : '16px',
         outline: 'none',
         cursor: 'pointer',
         appearance: 'none' as const,
@@ -1221,19 +1221,19 @@ const RegistrationForm: React.FC = () => {
                             {accepted ? (
                                 <div style={{ display: 'flex', alignItems: 'center', gap: '20px', flexWrap: 'wrap', justifyContent: 'center' }}>
                                     <div style={{
-                                        padding: '14px 28px',
+                                        padding: isMobile ? '8px 16px' : '14px 28px',
                                         background: 'linear-gradient(135deg, #f0fdf4, #dcfce7)',
                                         borderRadius: '100px',
-                                        border: '2px solid #22c55e',
+                                        border: isMobile ? '1px solid #22c55e' : '2px solid #22c55e',
                                         display: 'flex',
                                         alignItems: 'center',
-                                        gap: '12px',
+                                        gap: isMobile ? '8px' : '12px',
                                         color: '#166534',
-                                        fontSize: '15px',
+                                        fontSize: isMobile ? '13px' : '15px',
                                         fontWeight: 700,
                                         boxShadow: '0 4px 20px rgba(34, 197, 94, 0.15)'
                                     }}>
-                                        <CheckCircle size={20} /> Rules Accepted
+                                        <CheckCircle size={isMobile ? 16 : 20} /> Rules Accepted
                                     </div>
                                     <button
                                         type="button"
@@ -1282,9 +1282,9 @@ const RegistrationForm: React.FC = () => {
                                 disabled={isSubmitting || !accepted}
                                 style={{
                                     width: 'fit-content',
-                                    minWidth: '200px',
-                                    padding: '14px 28px',
-                                    fontSize: '15px',
+                                    minWidth: isMobile ? '160px' : '200px',
+                                    padding: isMobile ? '10px 24px' : '14px 28px',
+                                    fontSize: isMobile ? '14px' : '15px',
                                     fontWeight: 800,
                                     borderRadius: '100px',
                                     background: accepted
@@ -1297,7 +1297,7 @@ const RegistrationForm: React.FC = () => {
                                     display: 'flex',
                                     alignItems: 'center',
                                     justifyContent: 'center',
-                                    gap: '12px',
+                                    gap: isMobile ? '8px' : '12px',
                                     boxShadow: accepted
                                         ? '0 12px 40px rgba(0, 78, 224, 0.3)'
                                         : 'none',
