@@ -1,6 +1,6 @@
 # 🏆 Hack@JIT 1.0 - SDG Edition
 
-![Hack@JIT Header](https://raw.githubusercontent.com/Jeeva1121/Hackathon---Hack-JIT-1.0/main/public/favicon.png)
+![Hack@JIT Header](./public/favicon.png)
 
 > **"Code Till You Drop"** - A signature 24-hour innovation marathon hosted by Jansons Institute of Technology.
 
@@ -100,7 +100,7 @@ The purpose of Hack@JIT 1.0 is to empower young engineers to build technology-dr
 
 ## 🏫 About Jansons Institute of Technology (JIT)
 
-![JIT Campus](https://raw.githubusercontent.com/Jeeva1121/Hackathon---Hack-JIT-1.0/main/src/assets/jit_campus.png)
+![JIT Campus](./src/assets/jit_campus.png)
 
 Jansons Institute of Technology is a premier engineering institution committed to excellence in education and innovation. Located in Coimbatore, JIT provides a vibrant ecosystem for students to explore, build, and solve real-world problems. With a focus on sustainable technology and professional integrity, JIT stands as a beacon of academic brilliance.
 
