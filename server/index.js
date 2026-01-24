@@ -1,10 +1,22 @@
 import express from 'express';
-import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import xlsx from 'xlsx';
 import nodemailer from 'nodemailer';
-import Candidate from './models/Candidate.js';
+import { db } from './firebase.js';
+import {
+    collection,
+    addDoc,
+    getDocs,
+    query,
+    where,
+    doc,
+    updateDoc,
+    getDoc,
+    orderBy,
+    limit,
+    serverTimestamp
+} from 'firebase/firestore';
 
 dotenv.config();
 
@@ -16,15 +28,6 @@ app.use(express.json());
 app.get('/api/health', (req, res) => {
     res.json({ status: 'live', time: new Date().toISOString() });
 });
-
-// Use a persistent connection for MongoDB
-if (process.env.MONGODB_URI) {
-    mongoose.connect(process.env.MONGODB_URI)
-        .then(() => console.log('✅ Connected to MongoDB Hackathon DB'))
-        .catch(err => console.error('❌ MongoDB connection error:', err));
-} else {
-    console.error('❌ MONGODB_URI is missing from environment variables!');
-}
 
 // Check if email credentials are configured
 const emailConfigured = process.env.EMAIL_USER && process.env.EMAIL_PASS;
@@ -113,23 +116,42 @@ app.post('/api/register', async (req, res) => {
     console.log('Registration request received:', req.body.teamName);
     try {
         console.log('Checking slot count...');
-        const count = await Candidate.countDocuments();
+        const candidatesRef = collection(db, "candidates");
+        const snapshot = await getDocs(candidatesRef);
+        const count = snapshot.size;
+
         console.log('Current count:', count);
         if (count >= 50) return res.status(400).json({ error: 'Slots Full' });
 
-        console.log('Saving candidate...');
-        const candidate = new Candidate(req.body);
-        await candidate.save();
+        // Check for duplicate team name
+        const q = query(candidatesRef, where("teamName", "==", req.body.teamName));
+        const duplicateCheck = await getDocs(q);
+
+        if (!duplicateCheck.empty) {
+            return res.status(400).json({ error: 'Team Name already exists' });
+        }
+
+        console.log('Saving candidate to Firestore...');
+
+        // Add timestamp and status
+        const candidateData = {
+            ...req.body,
+            status: 'Pending',
+            registrationDate: new Date().toISOString(), // Store as string for easy serialization
+            createdAt: serverTimestamp()
+        };
+
+        await addDoc(candidatesRef, candidateData);
         console.log('Candidate saved successfully');
 
         console.log('Sending email...');
-        sendTeamEmail(candidate, 'Confirmation');
+        // We use the data we just created for the email
+        sendTeamEmail(candidateData, 'Confirmation');
 
         console.log('Sending success response');
         res.status(201).json({ message: 'Success! Confirmation email sent to both members.' });
     } catch (error) {
         console.error('Registration error:', error);
-        if (error.code === 11000) return res.status(400).json({ error: 'Team Name already exists' });
         res.status(500).json({ error: 'Failed' });
     }
 });
@@ -149,10 +171,21 @@ app.post('/api/admin/login', (req, res) => {
 
 app.patch('/api/candidates/:id/status', auth, async (req, res) => {
     try {
-        const candidate = await Candidate.findByIdAndUpdate(req.params.id, { status: req.body.status }, { new: true });
+        const candidateRef = doc(db, "candidates", req.params.id);
+
+        await updateDoc(candidateRef, {
+            status: req.body.status
+        });
+
+        // Fetch updated doc for email
+        const docSnap = await getDoc(candidateRef);
+        const candidate = docSnap.data();
+
         if (req.body.status === 'Verified') sendTeamEmail(candidate, 'Verified');
-        res.json({ success: true, candidate });
+
+        res.json({ success: true, candidate: { id: docSnap.id, ...candidate } });
     } catch (error) {
+        console.error('Update error:', error);
         res.status(500).json({ error: 'Failed' });
     }
 });
@@ -160,13 +193,16 @@ app.patch('/api/candidates/:id/status', auth, async (req, res) => {
 app.get('/api/candidates/export', auth, async (req, res) => {
     try {
         console.log('Exporting candidates...');
-        const data = await Candidate.find().sort({ registrationDate: -1 }).lean();
+        const q = query(collection(db, "candidates"), orderBy("registrationDate", "desc"));
+        const querySnapshot = await getDocs(q);
+
+        const data = querySnapshot.docs.map(doc => doc.data());
         console.log(`Found ${data.length} candidates for export.`);
 
         const flat = data.map(c => {
-            // Support both old (teamLeader) and new (leader) field names
-            const leader = c.leader || c.teamLeader || {};
-            const member = c.member || c.teamMember || {};
+            const leader = c.leader || {};
+            const member = c.member || {};
+            const mentor = c.mentor || {};
 
             return {
                 'Team Name': c.teamName || 'N/A',
@@ -187,14 +223,13 @@ app.get('/api/candidates/export', auth, async (req, res) => {
                 'Registration Date': c.registrationDate ? new Date(c.registrationDate).toLocaleString() : 'N/A',
                 'Food Preference': c.foodPreference || 'N/A',
                 'Referred By': c.referredBy || 'N/A',
-                // NEW COLUMNS APPENDED AT END - backward compatible
                 'Leader Gender': leader.gender || 'Not Provided',
                 'Member Gender': member.gender || 'Not Provided',
-                'Mentor Name': c.mentor?.name || 'Not Provided',
-                'Mentor Phone': c.mentor?.phone || 'Not Provided',
-                'Mentor Gender': c.mentor?.gender || 'Not Provided',
-                'Mentor Designation': c.mentor?.designation || 'Not Provided',
-                'Mentor Organization': c.mentor?.organization || 'Not Provided'
+                'Mentor Name': mentor.name || 'Not Provided',
+                'Mentor Phone': mentor.phone || 'Not Provided',
+                'Mentor Gender': mentor.gender || 'Not Provided',
+                'Mentor Designation': mentor.designation || 'Not Provided',
+                'Mentor Organization': mentor.organization || 'Not Provided'
             };
         });
 
@@ -216,11 +251,20 @@ app.get('/api/candidates/export', auth, async (req, res) => {
 
 app.get('/api/candidates/stats', auth, async (req, res) => {
     try {
-        const count = await Candidate.countDocuments();
-        const verified = await Candidate.countDocuments({ status: 'Verified' });
-        const recent = await Candidate.find().sort({ registrationDate: -1 }).limit(10);
+        const querySnapshot = await getDocs(collection(db, "candidates"));
+        const allDocs = querySnapshot.docs.map(d => ({ _id: d.id, ...d.data() }));
+
+        const count = allDocs.length;
+        const verified = allDocs.filter(d => d.status === 'Verified').length;
+
+        // Sort in memory since we already fetched all (hackathons rarely have >1000 teams, so this is fine)
+        const recent = allDocs
+            .sort((a, b) => new Date(b.registrationDate) - new Date(a.registrationDate))
+            .slice(0, 10);
+
         res.json({ total: count, verified, recentlyAdded: recent });
     } catch (error) {
+        console.error('Stats error:', error);
         res.status(500).json({ error: 'Failed' });
     }
 });
