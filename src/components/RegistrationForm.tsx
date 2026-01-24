@@ -20,12 +20,28 @@ const RegistrationForm: React.FC = () => {
     const [rulesChecked, setRulesChecked] = useState(false);
     const [accepted, setAccepted] = useState(false);
     const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+    const [showBackButton, setShowBackButton] = useState(true);
+    const [lastScrollY, setLastScrollY] = useState(0);
 
     useEffect(() => {
         const handleResize = () => setIsMobile(window.innerWidth < 768);
+        const handleScroll = () => {
+            const currentScrollY = window.scrollY;
+            if (currentScrollY > lastScrollY && currentScrollY > 100) {
+                setShowBackButton(false);
+            } else {
+                setShowBackButton(true);
+            }
+            setLastScrollY(currentScrollY);
+        };
+
         window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
-    }, []);
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        return () => {
+            window.removeEventListener('resize', handleResize);
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, [lastScrollY]);
 
     const [formData, setFormData] = useState({
         teamName: '',
@@ -136,7 +152,7 @@ const RegistrationForm: React.FC = () => {
     const inputStyle = (fieldName: string) => ({
         width: '100%',
         padding: '18px 24px',
-        borderRadius: '20px',
+        borderRadius: isMobile ? '28px' : '32px',
         border: focusedField === fieldName
             ? '2px solid transparent'
             : '2px solid rgba(226, 232, 240, 0.8)',
@@ -211,24 +227,24 @@ const RegistrationForm: React.FC = () => {
     const renderSectionHeader = (title: string, Icon: any, isImage: boolean = false) => (
         <div style={{ display: 'flex', alignItems: 'center', gap: '20px', marginBottom: '40px' }}>
             <div style={{
-                padding: '14px',
+                padding: isMobile ? '10px' : '12px',
                 background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.8))',
                 backdropFilter: 'blur(10px)',
-                borderRadius: '22px',
+                borderRadius: isMobile ? '16px' : '20px',
                 color: 'var(--primary)',
                 border: '1px solid rgba(255, 255, 255, 1)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                width: '56px',
-                height: '56px',
+                width: isMobile ? '44px' : '52px',
+                height: isMobile ? '44px' : '52px',
                 boxShadow: '0 10px 25px rgba(0, 78, 224, 0.08)',
                 position: 'relative'
             }}>
                 <div style={{
                     position: 'absolute',
                     inset: '-4px',
-                    borderRadius: '26px',
+                    borderRadius: isMobile ? '18px' : '22px',
                     padding: '2px',
                     background: 'linear-gradient(135deg, rgba(0, 78, 224, 0.1), rgba(34, 197, 94, 0.1))',
                     mask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
@@ -237,12 +253,12 @@ const RegistrationForm: React.FC = () => {
                     pointerEvents: 'none'
                 }} />
                 {isImage ? (
-                    <img src={Icon} alt={title} style={{ width: '30px', height: '30px', objectFit: 'contain' }} />
+                    <img src={Icon} alt={title} style={{ width: isMobile ? '22px' : '26px', height: isMobile ? '22px' : '26px', objectFit: 'contain' }} />
                 ) : (
-                    <Icon size={26} />
+                    <Icon size={isMobile ? 20 : 24} />
                 )}
             </div>
-            <h3 style={{ fontSize: '26px', fontWeight: 900, color: '#0f172a', letterSpacing: '-0.03em' }}>{title}</h3>
+            <h3 style={{ fontSize: isMobile ? '20px' : '24px', fontWeight: 900, color: '#0f172a', letterSpacing: '-0.03em' }}>{title}</h3>
         </div>
     );
 
@@ -305,7 +321,7 @@ const RegistrationForm: React.FC = () => {
         width: '100%',
         padding: '18px 24px',
         paddingRight: '48px',
-        borderRadius: '20px',
+        borderRadius: isMobile ? '28px' : '32px',
         border: '2px solid rgba(226, 232, 240, 0.8)',
         background: 'rgba(255, 255, 255, 0.9)',
         fontSize: '16px',
@@ -581,39 +597,43 @@ const RegistrationForm: React.FC = () => {
             }}>
 
                 {/* Back Button */}
-                <motion.div
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5 }}
-                    style={{
-                        position: 'absolute',
-                        top: isMobile ? '96px' : '100px',
-                        left: '5%',
-                        zIndex: 1100
-                    }}
-                >
-                    <Link to="/" style={{
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        gap: '8px',
-                        padding: '10px 20px',
-                        background: 'rgba(255, 255, 255, 1)',
-                        backdropFilter: 'blur(10px)',
-                        borderRadius: '100px',
-                        border: '1px solid rgba(226, 232, 240, 1)',
-                        color: '#475569',
-                        textDecoration: 'none',
-                        fontWeight: 700,
-                        fontSize: '13px',
-                        transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                        boxShadow: '0 8px 24px rgba(0, 0, 0, 0.05)',
-                        overflow: 'hidden',
-                        position: 'relative'
-                    }}>
-                        <ArrowLeft size={16} />
-                        Back to Home
-                    </Link>
-                </motion.div>
+                <AnimatePresence>
+                    {showBackButton && (
+                        <motion.div
+                            initial={{ opacity: 0, x: -20, y: -10 }}
+                            animate={{ opacity: 1, x: 0, y: 0 }}
+                            exit={{ opacity: 0, y: -20, transition: { duration: 0.2 } }}
+                            style={{
+                                position: 'fixed',
+                                top: isMobile ? '96px' : '100px',
+                                left: '5%',
+                                zIndex: 1100
+                            }}
+                        >
+                            <Link to="/" style={{
+                                display: 'inline-flex',
+                                alignItems: 'center',
+                                gap: '8px',
+                                padding: '10px 20px',
+                                background: 'rgba(255, 255, 255, 1)',
+                                backdropFilter: 'blur(10px)',
+                                borderRadius: '100px',
+                                border: '1px solid rgba(226, 232, 240, 1)',
+                                color: '#475569',
+                                textDecoration: 'none',
+                                fontWeight: 700,
+                                fontSize: '13px',
+                                transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                                boxShadow: '0 8px 24px rgba(0, 0, 0, 0.05)',
+                                overflow: 'hidden',
+                                position: 'relative'
+                            }}>
+                                <ArrowLeft size={16} />
+                                Back to Home
+                            </Link>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
 
                 <div style={{ maxWidth: '900px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
 
@@ -1243,18 +1263,19 @@ const RegistrationForm: React.FC = () => {
                                         background: 'rgba(255, 255, 255, 0.8)',
                                         border: '1px solid rgba(0, 78, 224, 0.2)',
                                         borderRadius: '100px',
-                                        padding: '12px 28px',
-                                        fontSize: '14px',
-                                        fontWeight: 600,
+                                        padding: '12px 24px',
+                                        fontSize: '13px',
+                                        fontWeight: 700,
                                         cursor: 'pointer',
                                         display: 'flex',
                                         alignItems: 'center',
-                                        gap: '10px',
+                                        justifyContent: 'center',
+                                        gap: '8px',
                                         transition: 'all 0.3s ease',
                                         boxShadow: '0 4px 12px rgba(0, 78, 224, 0.05)'
                                     }}
                                 >
-                                    <FileText size={18} />
+                                    <FileText size={15} style={{ marginTop: '-1px' }} />
                                     Read Requirements & Accept Rules to register
                                 </button>
                             )}
