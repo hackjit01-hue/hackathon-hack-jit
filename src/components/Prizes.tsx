@@ -299,7 +299,7 @@ const Prizes: React.FC = () => {
                         width: '100%',
                         boxShadow: '0 8px 20px rgba(124, 58, 237, 0.2)'
                     }}>
-                        SWAGS & Rewards
+                        Cash Prize Only
                     </div>
                 </motion.div>
             </div>
