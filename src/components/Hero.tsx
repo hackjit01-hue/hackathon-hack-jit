@@ -84,6 +84,7 @@ const Hero: React.FC = () => {
                         Join forces with brilliant minds to solve the 17 UN Sustainable Development Goals. A 24-hour journey from idea to impact.
                     </p>
 
+
                     <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap', marginBottom: '56px' }}>
                         <Link to="/register" className="btn-primary" style={{ padding: '14px 30px', fontSize: '16px' }}>
                             Register Team <ArrowRight size={18} />

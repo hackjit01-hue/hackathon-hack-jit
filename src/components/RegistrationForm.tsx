@@ -641,6 +641,24 @@ const RegistrationForm: React.FC = () => {
                         transition={{ duration: 0.6 }}
                         style={{ textAlign: 'center', marginBottom: '60px' }}
                     >
+                        <div style={{
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: '12px',
+                            background: '#fef2f2',
+                            border: '1px solid #fecaca',
+                            padding: '10px 20px',
+                            borderRadius: '16px',
+                            marginBottom: '32px',
+                            boxShadow: '0 4px 12px rgba(220, 38, 38, 0.1)'
+                        }}>
+                            <span style={{ fontSize: '20px' }}>🚨</span>
+                            <div style={{ textAlign: 'left' }}>
+                                <div style={{ color: '#b91c1c', fontWeight: 800, fontSize: '13px', textTransform: 'uppercase', letterSpacing: '0.02em', lineHeight: 1.2 }}>Registration Closes on February 5</div>
+                                <div style={{ color: '#ef4444', fontSize: '12px', fontWeight: 600, marginTop: '2px' }}>Secure your spot! Late entries not accepted.</div>
+                            </div>
+                        </div>
+
                         <h1 style={{
                             fontSize: 'clamp(36px, 6vw, 56px)',
                             fontWeight: 900,
@@ -850,22 +868,6 @@ const RegistrationForm: React.FC = () => {
                                     <li>Accommodation for <strong>Friday and Saturday nights</strong> is already included in the event registration and does <strong>not require any additional payment</strong>.</li>
                                     <li>Please select <strong>“Need Accommodation”</strong> only if you require <strong>Thursday night stay</strong>.</li>
                                 </ul>
-                                <div style={{
-                                    background: 'rgba(239, 68, 68, 0.08)',
-                                    border: '1px solid rgba(239, 68, 68, 0.2)',
-                                    color: '#b91c1c',
-                                    padding: '12px',
-                                    borderRadius: '12px',
-                                    display: 'flex',
-                                    gap: '12px',
-                                    alignItems: 'flex-start'
-                                }}>
-                                    <span style={{ fontSize: '18px' }}>🚨</span>
-                                    <div>
-                                        <div style={{ fontWeight: 800, textTransform: 'uppercase', marginBottom: '2px', fontSize: isMobile ? '12px' : '13px' }}>Registration Closes on February 5</div>
-                                        <div style={{ fontSize: isMobile ? '12px' : '13px', opacity: 0.9 }}>Secure your spot before the deadline. Late registrations will not be accepted.</div>
-                                    </div>
-                                </div>
                             </div>
                             <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
                                 <div style={{
