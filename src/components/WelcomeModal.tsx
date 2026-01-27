@@ -13,21 +13,11 @@ const WelcomeModal: React.FC = () => {
         const handleResize = () => setIsMobile(window.innerWidth < 768);
         window.addEventListener('resize', handleResize);
 
-        // Check if modal has already been shown in this session
-        const hasBeenShown = sessionStorage.getItem('welcome_modal_shown');
-
-        if (!hasBeenShown) {
-            const timer = setTimeout(() => {
-                setIsOpen(true);
-                sessionStorage.setItem('welcome_modal_shown', 'true');
-            }, 800);
-            return () => {
-                clearTimeout(timer);
-                window.removeEventListener('resize', handleResize);
-            };
-        }
-
+        const timer = setTimeout(() => {
+            setIsOpen(true);
+        }, 800);
         return () => {
+            clearTimeout(timer);
             window.removeEventListener('resize', handleResize);
         };
     }, []);
