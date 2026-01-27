@@ -672,7 +672,7 @@ const RegistrationForm: React.FC = () => {
                         </h1>
                         <p style={{
                             color: '#64748b',
-                            fontSize: '18px',
+                            fontSize: isMobile ? '14px' : '18px',
                             maxWidth: '700px',
                             margin: '0 auto',
                             lineHeight: 1.7
