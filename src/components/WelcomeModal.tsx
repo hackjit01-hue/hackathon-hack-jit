@@ -47,8 +47,8 @@ const WelcomeModal: React.FC = () => {
                         exit={{
                             opacity: 0,
                             scale: 0.95,
-                            y: 20,
-                            transition: { duration: 0.4, ease: 'easeOut' }
+                            y: 10,
+                            transition: { duration: 0.2, ease: 'easeIn' }
                         }}
                         transition={{
                             duration: 0.5,
@@ -57,7 +57,7 @@ const WelcomeModal: React.FC = () => {
                         style={{
                             background: 'rgba(255, 255, 255, 0.98)', // Glassy white with high opacity
                             width: '100%',
-                            maxWidth: isMobile ? '340px' : '440px',
+                            maxWidth: isMobile ? '310px' : '440px',
                             borderRadius: isMobile ? '28px' : '40px',
                             overflow: 'hidden',
                             position: 'relative',
@@ -107,10 +107,10 @@ const WelcomeModal: React.FC = () => {
                                 left: '20px',
                                 background: 'rgba(255, 255, 255, 0.25)',
                                 backdropFilter: 'blur(8px)',
-                                padding: '6px 14px',
+                                padding: isMobile ? '4px 10px' : '6px 14px',
                                 borderRadius: '100px',
                                 border: '1px solid rgba(255, 255, 255, 0.4)',
-                                fontSize: '10px',
+                                fontSize: isMobile ? '8px' : '10px',
                                 fontWeight: 700,
                                 color: 'rgba(15, 23, 42, 0.8)',
                                 textTransform: 'uppercase',
@@ -125,7 +125,7 @@ const WelcomeModal: React.FC = () => {
                         <div style={{ padding: isMobile ? '0 24px 36px' : '0 40px 48px', textAlign: 'center', position: 'relative', zIndex: 1 }}>
                             {/* Refined Announcement Bar - Moved Down Style */}
                             <div style={{
-                                width: 'fit-content',
+                                width: '100%',
                                 margin: '18px auto 18px', // Increased margins to move down and add space with title
                                 display: 'flex',
                                 alignItems: 'center',
@@ -143,13 +143,12 @@ const WelcomeModal: React.FC = () => {
                                     .announcement-text {
                                         color: #334155;
                                         font-weight: 700;
-                                        font-size: ${isMobile ? '11px' : '12px'};
+                                        font-size: ${isMobile ? '10px' : '12px'};
                                         letter-spacing: 0.05em;
                                         text-transform: uppercase;
-                                        white-space: nowrap;
-                                        display: flex;
-                                        align-items: center;
-                                        gap: 4px;
+                                        display: block;
+                                        line-height: 1.4;
+                                        text-align: center;
                                     }
                                 `}</style>
                             </div>
@@ -167,14 +166,14 @@ const WelcomeModal: React.FC = () => {
                                 />
                                 <style>{`
                                     .modal-title {
-                                        font-size: ${isMobile ? '36px' : '44px'} !important;
+                                        font-size: ${isMobile ? '30px' : '44px'} !important;
                                         font-weight: 800 !important;
                                         color: #0f172a !important;
-                                        line-height: 1 !important;
-                                        letter-spacing: -0.04em !important;
+                                        line-height: 1.1 !important;
+                                        letter-spacing: ${isMobile ? '-0.02em' : '-0.04em'} !important;
                                         display: block !important;
                                     }
-                                    .modal-title .split-word:nth-child(1) { color: #f97316; }
+                                    .modal-title .split-word:nth-child(1) { color: #f97316; margin-right: 0.15em; }
                                     .modal-title .split-word:nth-child(2) { color: #2563eb; }
                                 `}</style>
                             </div>
