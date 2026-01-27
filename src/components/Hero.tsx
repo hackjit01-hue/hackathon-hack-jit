@@ -69,7 +69,7 @@ const Hero: React.FC = () => {
                         fontWeight: 900,
                         color: '#0f172a'
                     }}>
-                        <span style={{ color: 'var(--primary)' }}>Hack@JIT 1.0</span> <br />
+                        <span style={{ color: 'var(--primary)' }}>Brilliant Bharath</span> <br />
                         <span style={{ display: 'inline-flex', gap: '8px', fontSize: '0.85em' }}>
                             <span style={{ color: '#FF9933' }}>Viksit</span>
                             <span style={{ color: '#138808' }}>Bharat</span>

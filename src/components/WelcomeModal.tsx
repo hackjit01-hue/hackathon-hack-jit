@@ -157,7 +157,7 @@ const WelcomeModal: React.FC = () => {
                                 marginBottom: '12px',
                                 lineHeight: 1
                             }}>
-                                <span style={{ color: 'var(--primary)' }}>Hack@JIT</span> 1.0
+                                <span style={{ color: 'var(--primary)' }}>CAMCEE</span> 5.0
                             </h2>
 
                             <div style={{

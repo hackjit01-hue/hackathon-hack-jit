@@ -83,7 +83,7 @@ const Footer: React.FC = () => {
                     flexWrap: 'wrap',
                     gap: '16px'
                 }}>
-                    <div>© 2026 Viksit Bharat Hackathon 1.0. All rights reserved.</div>
+                    <div>© 2026 Brilliant Bharath 1.0. All rights reserved.</div>
                     <div style={{ display: 'flex', gap: '20px' }}>
                         <Link to="/admin" style={{ color: '#64748b', textDecoration: 'none', fontWeight: 700 }}>Coordinator Portal</Link>
                         <span style={{ cursor: 'pointer' }}>Privacy</span>
