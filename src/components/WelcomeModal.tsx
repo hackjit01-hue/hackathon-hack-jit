@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import campusImg from '../assets/jit_campus.png';
-import sirenIcon from '../assets/siren_icon.png';
 import SplitText from './SplitText';
 import BlurText from './BlurText';
 
@@ -192,27 +191,7 @@ const WelcomeModal: React.FC = () => {
                                 Welcome to CSE Department
                             </div>
 
-                            {/* Registration Deadline Notice */}
-                            <div style={{
-                                marginBottom: isMobile ? '28px' : '34px', // Slightly reduced to move button up
-                                fontSize: isMobile ? '12px' : '13px',
-                                fontWeight: 600,
-                                color: '#ef4444',
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                                gap: '8px'
-                            }}>
-                                <img src={sirenIcon} alt="Siren" style={{ width: '20px', height: '20px', animation: 'pulse 2s infinite', objectFit: 'contain' }} />
-                                Registration closes on Feb 4
-                                <style>{`
-                                    @keyframes pulse {
-                                        0% { opacity: 1; transform: scale(1); }
-                                        50% { opacity: 0.5; transform: scale(1.2); }
-                                        100% { opacity: 1; transform: scale(1); }
-                                    }
-                                `}</style>
-                            </div>
+                            <div style={{ marginBottom: isMobile ? '28px' : '34px' }} />
 
                             <button
                                 onClick={closeModal}

@@ -71,17 +71,15 @@ const Hero: React.FC = () => {
                     </div>
 
                     <h1 style={{
-                        fontSize: isMobile ? '7vw' : 'clamp(40px, 4.5vw, 64px)',
-                        lineHeight: 1.2,
+                        fontSize: isMobile ? '38px' : 'clamp(44px, 5.5vw, 76px)',
+                        lineHeight: 1.1,
                         marginBottom: isMobile ? '20px' : '28px',
                         fontWeight: 900,
                         color: '#0f172a'
                     }}>
-                        <span style={{ color: 'var(--primary)', whiteSpace: 'nowrap', display: 'inline-block' }}>Brilliant Bharat Hackathon</span> <br />
-                        <span style={{ display: 'inline-flex', gap: '8px', fontSize: '0.85em' }}>
-                            <span style={{ color: '#FF9933' }}>Viksit</span>
-                            <span style={{ color: '#138808' }}>Bharat</span>
-                        </span>
+                        <span style={{ color: '#FF9933' }}>Brilliant</span>{' '}
+                        <span style={{ color: '#138808' }}>Bharat</span> <br />
+                        <span style={{ color: 'var(--primary)', fontSize: '0.85em' }}>Hackathon</span>
                     </h1>
 
                     <p style={{
