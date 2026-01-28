@@ -18,7 +18,7 @@ const Hero: React.FC = () => {
             minHeight: '100vh',
             display: 'flex',
             alignItems: 'center',
-            padding: isMobile ? '80px 5% 60px' : 'clamp(120px, 15vh, 180px) 5% 100px',
+            padding: isMobile ? '70px 5% 60px' : 'clamp(120px, 15vh, 180px) 5% 100px',
             background: 'transparent',
             position: 'relative',
             overflow: 'visible' // Changed from hidden to visible to prevent clipping floating elements
