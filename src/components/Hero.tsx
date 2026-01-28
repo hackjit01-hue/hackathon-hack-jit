@@ -71,13 +71,13 @@ const Hero: React.FC = () => {
                     </div>
 
                     <h1 style={{
-                        fontSize: isMobile ? '38px' : 'clamp(44px, 5.5vw, 76px)',
-                        lineHeight: 1.1,
+                        fontSize: isMobile ? '7vw' : 'clamp(40px, 4.5vw, 64px)',
+                        lineHeight: 1.2,
                         marginBottom: isMobile ? '20px' : '28px',
                         fontWeight: 900,
                         color: '#0f172a'
                     }}>
-                        <span style={{ color: 'var(--primary)' }}>Brilliant Bharat</span> <br />
+                        <span style={{ color: 'var(--primary)', whiteSpace: 'nowrap', display: 'inline-block' }}>Brilliant Bharat Hackathon</span> <br />
                         <span style={{ display: 'inline-flex', gap: '8px', fontSize: '0.85em' }}>
                             <span style={{ color: '#FF9933' }}>Viksit</span>
                             <span style={{ color: '#138808' }}>Bharat</span>
@@ -131,17 +131,27 @@ const Hero: React.FC = () => {
                 </motion.div>
 
                 <motion.div
-                    initial={{ opacity: 0, scale: 0.8, y: 0 }}
+                    initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
                     animate={{
                         opacity: 1,
-                        scale: 1,
-                        y: [-10, 10, -10]
+                        scale: isMobile ? 1 : [1, 1.02, 1],
+                        y: [-15, 15, -15],
+                        rotate: [-2, 2, -2]
                     }}
                     transition={{
                         opacity: { duration: 1 },
-                        scale: { duration: 1 },
+                        scale: {
+                            duration: 8,
+                            repeat: Infinity,
+                            ease: "easeInOut"
+                        },
                         y: {
                             duration: 6,
+                            repeat: Infinity,
+                            ease: "easeInOut"
+                        },
+                        rotate: {
+                            duration: 10,
                             repeat: Infinity,
                             ease: "easeInOut"
                         }
@@ -152,18 +162,18 @@ const Hero: React.FC = () => {
                         justifyContent: 'center',
                         alignItems: 'center',
                         minWidth: '340px',
-                        padding: '60px 20px' // Increased vertical padding to protect labels during animation
+                        padding: isMobile ? '20px' : '60px 20px'
                     }}
                 >
                     <img
                         src={camceeImage}
-                        alt="CAMCEE 5.0"
+                        alt="Brilliant Bharat Hackathon"
                         style={{
                             width: '100%',
                             height: 'auto',
-                            maxWidth: '620px', // More focused size for this illustration
+                            maxWidth: isMobile ? '100%' : '540px', // Slightly reduced size in lap view
                             objectFit: 'contain',
-                            filter: 'drop-shadow(0 40px 100px rgba(0, 78, 224, 0.1))',
+                            filter: 'drop-shadow(0 40px 100px rgba(0, 78, 224, 0.15))',
                             display: 'block'
                         }}
                     />
