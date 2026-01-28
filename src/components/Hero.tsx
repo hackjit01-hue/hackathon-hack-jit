@@ -131,27 +131,17 @@ const Hero: React.FC = () => {
                 </motion.div>
 
                 <motion.div
-                    initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
+                    initial={{ opacity: 0, scale: 0.9 }}
                     animate={{
                         opacity: 1,
-                        scale: isMobile ? 1 : [1, 1.02, 1],
-                        y: [-15, 15, -15],
-                        rotate: [-2, 2, -2]
+                        scale: 1,
+                        y: [-20, 20, -20]
                     }}
                     transition={{
-                        opacity: { duration: 1 },
-                        scale: {
-                            duration: 8,
-                            repeat: Infinity,
-                            ease: "easeInOut"
-                        },
+                        opacity: { duration: 1.2 },
+                        scale: { duration: 1.2 },
                         y: {
-                            duration: 6,
-                            repeat: Infinity,
-                            ease: "easeInOut"
-                        },
-                        rotate: {
-                            duration: 10,
+                            duration: 8,
                             repeat: Infinity,
                             ease: "easeInOut"
                         }
@@ -173,7 +163,7 @@ const Hero: React.FC = () => {
                             height: 'auto',
                             maxWidth: isMobile ? '100%' : '540px', // Slightly reduced size in lap view
                             objectFit: 'contain',
-                            filter: 'drop-shadow(0 40px 100px rgba(0, 78, 224, 0.15))',
+                            filter: 'drop-shadow(0 50px 100px rgba(0, 78, 224, 0.12))',
                             display: 'block'
                         }}
                     />
