@@ -242,7 +242,7 @@ app.patch('/api/candidates/:id/status', auth, async (req, res) => {
         const docSnap = await getDoc(candidateRef);
         const candidate = docSnap.data();
 
-        if (req.body.status === 'Verified') sendTeamEmail(candidate, 'Verified');
+        if (req.body.status === 'Verified') await sendTeamEmail(candidate, 'Verified');
 
         res.json({ success: true, candidate: { id: docSnap.id, ...candidate } });
     } catch (error) {

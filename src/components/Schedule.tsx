@@ -12,7 +12,7 @@ const Schedule: React.FC = () => {
 
     const timelineData = [
         {
-            time: "10:30 AM",
+            time: "09:30 AM",
             event: "Opening Ceremony",
             description: "Kickstarting the innovation journey with a welcome address and event overview.",
             icon: (
@@ -24,7 +24,7 @@ const Schedule: React.FC = () => {
             )
         },
         {
-            time: "11:00 AM",
+            time: "10:00 AM",
             event: "Hackathon Begins",
             description: "The clock starts ticking. Participants begin building, brainstorming, and innovating.",
             icon: (
@@ -35,7 +35,7 @@ const Schedule: React.FC = () => {
             )
         },
         {
-            time: "11:30 AM",
+            time: "10:30 AM",
             event: "Refreshments",
             description: "Quick fuel to keep the momentum and creativity flowing.",
             icon: (
@@ -47,7 +47,7 @@ const Schedule: React.FC = () => {
             )
         },
         {
-            time: "01:00 PM",
+            time: "12:00 PM",
             event: "Lunch Break",
             description: "Networking and relaxation over a hearty meal.",
             icon: (
@@ -58,7 +58,7 @@ const Schedule: React.FC = () => {
             )
         },
         {
-            time: "04:00 PM",
+            time: "03:00 PM",
             event: "Mentor Review Session",
             description: "Teams receive critical feedback and guidance from industry experts.",
             icon: (
@@ -70,7 +70,7 @@ const Schedule: React.FC = () => {
             )
         },
         {
-            time: "05:00 PM",
+            time: "04:00 PM",
             event: "Refreshments",
             description: "Evening energy boost for the final sprint.",
             icon: (
@@ -82,7 +82,7 @@ const Schedule: React.FC = () => {
             )
         },
         {
-            time: "08:00 PM",
+            time: "07:00 PM",
             event: "Dinner",
             description: "Refuel, regroup, and strategize for overnight progress.",
             icon: (
@@ -104,7 +104,7 @@ const Schedule: React.FC = () => {
             )
         },
         {
-            time: "08:00 AM",
+            time: "07:00 AM",
             event: "Breakfast",
             isNextDay: true,
             description: "Fresh start to energize teams for the final push.",
@@ -117,7 +117,7 @@ const Schedule: React.FC = () => {
             )
         },
         {
-            time: "11:00 AM",
+            time: "10:00 AM",
             event: "Hackathon Ends",
             isNextDay: true,
             description: "Final submissions completed and projects locked.",
@@ -128,7 +128,7 @@ const Schedule: React.FC = () => {
             )
         },
         {
-            time: "01:00 PM",
+            time: "12:00 PM",
             event: "Prize Distribution & Closing",
             isNextDay: true,
             description: "Winners announced, certificates distributed, and event formally concluded.",

@@ -108,7 +108,7 @@ const Hero: React.FC = () => {
                             <Timer color="var(--primary)" size={20} />
                             <div>
                                 <div style={{ fontWeight: 800, fontSize: '16px' }}>24 Hours</div>
-                                <div style={{ fontSize: '11px', color: '#94a3b8', fontWeight: 600 }}>11 AM - 11 AM</div>
+                                <div style={{ fontSize: '11px', color: '#94a3b8', fontWeight: 600 }}>10 AM - 10 AM</div>
                             </div>
                         </div>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '14px', background: 'white', padding: '14px 20px', borderRadius: '24px', border: '1px solid #f1f5f9', boxShadow: '0 4px 20px rgba(0,0,0,0.02)' }}>
