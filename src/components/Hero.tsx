@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Timer, Trophy, CreditCard } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import camceeImage from '../assets/camcee_hero.png';
 
 const Hero: React.FC = () => {
+    const navigate = useNavigate();
     const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
     const [isFull, setIsFull] = useState(false);
 
@@ -20,6 +21,14 @@ const Hero: React.FC = () => {
 
         return () => window.removeEventListener('resize', handleResize);
     }, []);
+
+    const handleRegisterClick = () => {
+        if (isFull) {
+            alert("All slots are registered! Thank you for your interest.");
+        } else {
+            navigate('/register');
+        }
+    };
 
     return (
         <section style={{
@@ -103,21 +112,13 @@ const Hero: React.FC = () => {
 
 
                     <div style={{ display: 'flex', gap: isMobile ? '12px' : '20px', flexWrap: 'wrap', marginBottom: isMobile ? '40px' : '56px' }}>
-                        {isFull ? (
-                            <div className="btn-primary" style={{
-                                padding: isMobile ? '10px 24px' : '14px 30px',
-                                fontSize: isMobile ? '14px' : '16px',
-                                background: '#94a3b8',
-                                cursor: 'not-allowed',
-                                opacity: 0.8
-                            }}>
-                                Registration Full
-                            </div>
-                        ) : (
-                            <Link to="/register" className="btn-primary" style={{ padding: isMobile ? '10px 24px' : '14px 30px', fontSize: isMobile ? '14px' : '16px' }}>
-                                Register Team <ArrowRight size={isMobile ? 16 : 18} />
-                            </Link>
-                        )}
+                        <button
+                            onClick={handleRegisterClick}
+                            className="btn-primary"
+                            style={{ padding: isMobile ? '10px 24px' : '14px 30px', fontSize: isMobile ? '14px' : '16px', border: 'none' }}
+                        >
+                            {isFull ? 'Registration Full' : 'Register Team'} <ArrowRight size={isMobile ? 16 : 18} />
+                        </button>
                         <a href="#about" className="btn-outline" style={{ padding: isMobile ? '10px 24px' : '14px 30px', fontSize: isMobile ? '14px' : '16px' }}>
                             Sustainable Goals
                         </a>

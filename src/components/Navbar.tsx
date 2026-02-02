@@ -1,18 +1,37 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import jitLogo from '../assets/jit_logo_no_bg.png';
 
 const Navbar: React.FC = () => {
+  const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const [isFull, setIsFull] = useState(false);
 
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 768);
     window.addEventListener('resize', handleResize);
+
+    // Check registration status
+    fetch('/api/registration-status')
+      .then(res => res.json())
+      .then(data => setIsFull(data.isFull))
+      .catch(err => console.error('Status fetch error:', err));
+
     return () => window.removeEventListener('resize', handleResize);
   }, []);
+
+  const handleRegisterClick = (e: any) => {
+    e.preventDefault();
+    if (isFull) {
+      alert("All slots are registered! Thank you for your interest.");
+    } else {
+      setIsMenuOpen(false);
+      navigate('/register');
+    }
+  };
 
   const navLinks = [
     { name: "Viksit Bharat", href: "#about" },
@@ -77,7 +96,9 @@ const Navbar: React.FC = () => {
           {navLinks.map((link) => (
             <a key={link.name} href={link.href} style={{ color: '#64748b', textDecoration: 'none', fontWeight: 600, fontSize: '15px' }}>{link.name}</a>
           ))}
-          <Link to="/register" className="btn-primary" style={{ padding: '8px 20px', fontSize: '13px', borderRadius: '100px' }}>Register Now</Link>
+          <button onClick={handleRegisterClick} className="btn-primary" style={{ padding: '8px 20px', fontSize: '13px', borderRadius: '100px', border: 'none' }}>
+            {isFull ? 'Registration Full' : 'Register Now'}
+          </button>
         </div>
       )}
 
@@ -116,14 +137,13 @@ const Navbar: React.FC = () => {
               {link.name}
             </a>
           ))}
-          <Link
-            to="/register"
-            onClick={() => setIsMenuOpen(false)}
+          <button
+            onClick={handleRegisterClick}
             className="btn-primary"
-            style={{ width: '100%', justifyContent: 'center', padding: '12px', fontSize: '15px' }}
+            style={{ width: '100%', justifyContent: 'center', padding: '12px', fontSize: '15px', border: 'none' }}
           >
-            Register Now
-          </Link>
+            {isFull ? 'Registration Full' : 'Register Now'}
+          </button>
         </div>
       )}
     </nav>

@@ -1438,11 +1438,6 @@ const RegistrationForm: React.FC = () => {
                             </form>
                         </div>
 
-                        <style>{`
-                            @keyframes spin {
-                                to { transform: rotate(360deg); }
-                            }
-                        `}</style>
                     </>
                 )}
             </section>

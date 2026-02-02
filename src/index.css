@@ -153,6 +153,12 @@ h6 {
   animation: float 6s ease-in-out infinite;
 }
 
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 section {
   padding: 100px 5%;
 }
